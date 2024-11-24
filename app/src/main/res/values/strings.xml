@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">hw9_sqlite_shopping_list</string>
+    <string name="shoppingLists">Shopping Lists</string>
+    <string name="productLists">Product List</string>
+    <string name="products">Products</string>
+    <string name="details">Details</string>
+    <string name="productName">Product Name</string>
+    <string name="listName">List Name</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="enterProductName">Enter product name</string>
+    <string name="enterProductQuantity">Enter product quantity</string>
+    <string name="productQuantity">Product Quantity</string>
+    <string name="productType">Product Type</string>
+    <string name="selectProductType">Select product type</string>
+    <string name="selectListName">Select list name</string>
+    <string name="addNew">Add New</string>
 </resources>

@@ -28,8 +28,17 @@ public interface ProductModelDao {
     List<ProductModel> getAllProducts();
 
     @Query("SELECT * FROM products")
-    List<ProductModelWithDetails> getProductWithDetails();
+    List<ProductModelWithDetails> getAllProductsWithDetails();
+
+    @Query("SELECT * FROM products WHERE listId = :listId")
+    List<ProductModelWithDetails> getAllProductsWithDetailsByListsId(int listId);
 
     @Query("SELECT * FROM products WHERE id = :id")
     ProductModel getProductById(int id);
+
+    @Query("SELECT * FROM products WHERE listId = :listId")
+    List<ProductModel> getAllProductsByListsId(int listId);
+
+    @Query("SELECT * FROM products WHERE id = :id")
+    ProductModelWithDetails getProductWithDetailsById(int id);
 }

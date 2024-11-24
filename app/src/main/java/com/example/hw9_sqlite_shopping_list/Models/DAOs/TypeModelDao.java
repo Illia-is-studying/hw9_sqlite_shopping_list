@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.hw9_sqlite_shopping_list.Models.ListModel;
 import com.example.hw9_sqlite_shopping_list.Models.TypeModel;
 import java.util.List;
 
@@ -25,4 +26,7 @@ public interface TypeModelDao {
 
     @Query("SELECT * FROM types WHERE id = :id")
     TypeModel getTypeById(int id);
+
+    @Query("SELECT * FROM types WHERE label = :label")
+    TypeModel getTypeByLabel(String label);
 }

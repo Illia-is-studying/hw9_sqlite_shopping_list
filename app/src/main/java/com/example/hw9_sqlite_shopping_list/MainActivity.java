@@ -8,6 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.hw9_sqlite_shopping_list.Fragments.ListsFragment;
 import com.example.hw9_sqlite_shopping_list.Helpers.DatabaseManager;
 import com.example.hw9_sqlite_shopping_list.Models.DAOs.ListModelDao;
 import com.example.hw9_sqlite_shopping_list.Models.DAOs.ProductModelDao;
@@ -17,7 +18,9 @@ import com.example.hw9_sqlite_shopping_list.Models.ProductModel;
 import com.example.hw9_sqlite_shopping_list.Models.ProductModelWithDetails;
 import com.example.hw9_sqlite_shopping_list.Models.TypeModel;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,15 +36,29 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        //initialization();
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_fragment, new ListsFragment())
+                    .commit();
+        }
+    }
+
+    private void initialization() {
         DatabaseManager databaseManager = DatabaseManager.getInstance(this);
         ListModelDao listModelDao = databaseManager.listModelDao();
         TypeModelDao typeModelDao = databaseManager.typeModelDao();
         ProductModelDao productModelDao = databaseManager.productModelDao();
 
         int[] dates = new int[3];
-        dates[0] = (int) (new Date(2024,9, 12).getTime() / 1000);
-        dates[1] = (int) (new Date(2024,10, 9).getTime() / 1000);
-        dates[2] = (int) (new Date(2024,10, 27).getTime() / 1000);
+        dates[0] = (int) (new GregorianCalendar(2024, Calendar.SEPTEMBER, 12)
+                .getTimeInMillis() / 1000);
+        dates[1] = (int) (new GregorianCalendar(2024, Calendar.OCTOBER, 9)
+                .getTimeInMillis() / 1000);
+        dates[2] = (int) (new GregorianCalendar(2024, Calendar.OCTOBER, 27)
+                .getTimeInMillis() / 1000);
 
         new Thread(() -> {
             ListModel listModel1 = new ListModel("List 1",
@@ -67,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     new ProductModel(2, 1, 0,2f, "Product 3"));
 
             //List<ListModel> lists = listModelDao.getAllLists();
-            List<ProductModelWithDetails> products = productModelDao.getProductWithDetails();
+            //List<ProductModelWithDetails> products = productModelDao.getAllProductsWithDetails();
         }).start();
     }
 }

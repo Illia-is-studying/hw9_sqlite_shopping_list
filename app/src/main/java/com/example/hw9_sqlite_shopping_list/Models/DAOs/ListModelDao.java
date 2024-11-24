@@ -26,4 +26,7 @@ public interface ListModelDao {
 
     @Query("SELECT * FROM lists WHERE id = :id")
     ListModel getListById(int id);
+
+    @Query("SELECT * FROM lists WHERE name = :name")
+    ListModel getListByName(String name);
 }
